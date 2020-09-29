@@ -1,0 +1,20 @@
+{% extends "main/base.html" %}
+{% block content %}
+<h1>Builds</h1>
+<div class="container-fluid">
+  <div class="row">
+      {% for product in object_list %}
+        <div class="col-sm-4">
+          <a href="{{ product.get_absolute_url }}">
+            <div>
+              <h1>{{ product.name|safe }}</h1>
+              <img src="{{ product.image.url }}" width="200" height="200"/>
+              <p>{{ product.description|safe }}</p>
+              <h2>£{{ product.price|safe }}</h2>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+  </div>
+</div>
+{% endblock content %}

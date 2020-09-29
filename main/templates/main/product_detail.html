@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div>
+    <h1>{{ object.name }}</h1>
+    <img src="{{ object.image.url }}" width="300" height="300" />
+    <p>{{ object.long_description }}</p>
+    <h2>£{{ object.price }}</h2>
+    <p>Quantity Available: {{ object.quantity }}</p>
+    <form method='GET' action='{% url "update_basket" object.slug %}'>
+        {% csrf_token %}
+        <div class='form-group'>
+            <input type="submit" class="btn btn-primary" value='Add to Basket'>
+        </div>
+    </form>
+</div>
+{% endblock content %}
